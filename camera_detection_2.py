@@ -69,7 +69,7 @@ class SimpleCNN(torch.nn.Module):
     def __init__(self, num_classes):
         super(SimpleCNN, self).__init__()
         
-        # A smaller model more suitable for Raspberry Pi
+        # A smaller model hopefully more suitable for Raspberry Pi
         self.features = torch.nn.Sequential(
             torch.nn.Conv2d(3, 16, kernel_size=3, stride=2, padding=1),
             torch.nn.ReLU(inplace=True),
@@ -345,7 +345,7 @@ class AgeDetector:
         print("Initializing camera...")
         
         # Initialize the camera
-        # On Raspberry Pi, you might need to use the Pi camera module
+        # On Raspberry Pi, Pi camera module is probably needed // ill come back to that later :)
         try:
             #cap = cv2.VideoCapture(0)
             cap = cv2.VideoCapture("test.h264")
