@@ -1,0 +1,1 @@
+> python3 camera_age_detection2.py train --data-dir datasets/trainingdatapro/age-detection-human-faces-18-60-years/versions/1
