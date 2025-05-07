@@ -1,1 +1,4 @@
-> python3 camera_age_detection2.py train --data-dir datasets/trainingdatapro/age-detection-human-faces-18-60-years/versions/1
+> source myenv/bin/activate 
+> cd Desktop
+> python3 thesis_fixing.py train --data-dir datasets/trainingdatapro/age-detection-human-faces-18-60-years/versions/1
+> python3 thesis_fixing.py detect --model-path saved_models/age_best_model.pth --class-mapping saved_models/class_mapping.json
