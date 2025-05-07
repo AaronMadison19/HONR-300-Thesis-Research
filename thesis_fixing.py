@@ -335,13 +335,28 @@ class AgeDetector:
             _, predicted = torch.max(outputs, 1)
             predicted_idx = predicted.item()
             
+            print(f"Class mapping: {self.class_mapping}")
+            print(f"Type of class mapping: {type(self.class_mapping)}")
+            print(f"Predicted index: {predicted_idx}")
+            print(f"Type of predicted index: {type(predicted_idx)}")
+            
+            predicted_idx_str = str(predicted_idx)
+            
             # Fix: Directly access the class mapping by index
-            if str(predicted_idx) in self.class_mapping:
-                age_class = self.class_mapping[str(predicted_idx)]
+            #if str(predicted_idx) in self.class_mapping:
+            if predicted_idx_str in self.class_mapping:
+                
+                #age_class = self.class_mapping[str(predicted_idx)]
+                age_class = self.class_mapping[predicted_idx_str]
+
             else:
-                age_class = "Unknown"
-                print(f"Unknown class index: {predicted_idx}")
-                print(f"Available indices: {list(self.class_mapping.keys())}")
+                try:
+                    age_class = self.class_mapping[predicted_idx]
+                except (KeyError, TypeError):
+                    
+                    age_class = "Unknown"
+                    print(f"Unknown class index: {predicted_idx}")
+                    print(f"Available indices: {list(self.class_mapping.keys())}")
         
         return age_class
     
